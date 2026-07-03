@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Balafama Jamabo</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #000000; color: #f5f5f7; padding-top: 48px;
+        }
+        nav {
+            background: rgba(22, 22, 23, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            position: fixed; top: 0; width: 100%; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-container {
+            max-width: 1024px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 48px; padding: 0 22px;
+        }
+        .nav-logo { font-weight: 600; font-size: 14px; color: #f5f5f7; text-decoration: none; }
+        .nav-links a { color: rgba(245, 245, 247, 0.8); text-decoration: none; font-size: 12px; margin-left: 22px; }
+        .nav-links a:hover, .nav-links a.active { color: #ffffff; }
+
+        .container { max-width: 900px; margin: 60px auto; padding: 0 22px; }
+        h1 { font-size: 40px; font-weight: 700; margin-bottom: 40px; }
+        
+        .project-card {
+            background-color: #161617; border-radius: 18px; padding: 35px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px;
+            display: flex; gap: 30px; align-items: center;
+        }
+        .project-img-placeholder {
+            width: 200px; height: 130px; background-color: #2d2d2f; border-radius: 10px;
+            display: flex; justify-content: center; align-items: center; color: #86868b; font-size: 12px; flex-shrink: 0;
+        }
+        .project-info h2 { font-size: 24px; color: #ffffff; margin-bottom: 10px; }
+        .project-info p { font-size: 15px; color: #86868b; line-height: 1.5; margin-bottom: 15px; }
+        .project-link { color: #2997ff; text-decoration: none; font-size: 14px; font-weight: 500; }
+        .project-link:hover { text-decoration: underline; }
+
+        footer { background-color: #161617; padding: 30px 22px; text-align: center; font-size: 12px; color: #86868b; margin-top: 80px; }
+        @media (max-width: 768px) { .project-card { flex-direction: column; text-align: center; } .project-img-placeholder { width: 100%; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Balafama Jamabo</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Me</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="planner.html">Academic Planner</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Sample Portfolio Projects</h1>
+
+        <div class="project-card">
+            <div class="project-img-placeholder">[NASA ARSET Interface Image]</div>
+            <div class="project-info">
+                <h2>Remote Sensing Analysis System</h2>
+                <p>Designed a structured geospatial matrix engine using NASA ARSET data sets to monitor systemic environmental and soil metrics, converting telemetry maps into actionable threat-mitigation models.</p>
+                <a href="#" class="project-link">Launch Project Preview &rarr;</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-img-placeholder">[Mechatronic Control Layer Image]</div>
+            <div class="project-info">
+                <h2>Automated Control Infrastructure Optimization</h2>
+                <p>Engineered an operational automation pipeline that standardized environmental conditions and biological tracking inside commercial production architectures, decreasing yield variations.</p>
+                <a href="#" class="project-link">Launch Project Preview &rarr;</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-img-placeholder">[Secure Directory Image]</div>
+            <div class="project-info">
+                <h2>Enterprise Resource Access Controller</h2>
+                <p>Developed a conceptual secure authentication script designed around network auditing workflows, mapping functional access layers inside multi-department business architectures.</p>
+                <a href="#" class="project-link">Launch Project Preview &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MIVA Open University. All Rights Reserved | Balafama Jamabo Profile Submission</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Balafama Jamabo</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #000000; color: #f5f5f7; padding-top: 48px;
+        }
+        nav {
+            background: rgba(22, 22, 23, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            position: fixed; top: 0; width: 100%; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-container {
+            max-width: 1024px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 48px; padding: 0 22px;
+        }
+        .nav-logo { font-weight: 600; font-size: 14px; color: #f5f5f7; text-decoration: none; }
+        .nav-links a { color: rgba(245, 245, 247, 0.8); text-decoration: none; font-size: 12px; margin-left: 22px; }
+        .nav-links a:hover, .nav-links a.active { color: #ffffff; }
+
+        .container { max-width: 550px; margin: 60px auto; padding: 0 22px; }
+        h1 { font-size: 40px; font-weight: 700; margin-bottom: 10px; text-align: center; }
+        .subtitle { color: #86868b; font-size: 17px; margin-bottom: 35px; text-align: center; }
+
+        form { background: #161617; padding: 35px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.05); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 14px; color: #f5f5f7; margin-bottom: 8px; font-weight: 500; }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%; background-color: #323236; border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px; padding: 12px; color: #ffffff; font-size: 15px; font-family: inherit; outline: none;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus { border-color: #2997ff; }
+        textarea { height: 110px; resize: none; }
+        
+        .error-msg { color: #ff453a; font-size: 13px; margin-top: 6px; display: none; }
+        button[type="submit"] {
+            width: 100%; background-color: #2997ff; color: #fff; border: none; padding: 14px;
+            border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px;
+        }
+        button[type="submit"]:hover { background-color: #0077ed; }
+        .success-banner { background-color: #34c759; color: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none; text-align: center; font-weight: 500; }
+
+        footer { background-color: #161617; padding: 30px 22px; text-align: center; font-size: 12px; color: #86868b; margin-top: 100px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Balafama Jamabo</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Me</a>
+                <a href="projects.html">Projects</a>
+                <a href="planner.html">Academic Planner</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Connect.</h1>
+        <p class="subtitle">Submit validation queries or programmatic portfolio reviews.</p>
+
+        <div id="successBanner" class="success-banner">Form validation successful! Message transmission simulated.</div>
+        
+        <form id="contactForm" onsubmit="return validateForm(event)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="John Doe">
+                <div id="nameError" class="error-msg">Name field cannot be left blank.</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="name@example.com">
+                <div id="emailError" class="error-msg">Please enter a valid structure email account.</div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" placeholder="08012345678">
+                <div id="phoneError" class="error-msg">Phone lines must solely possess numerical character digits.</div>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Type assignment message details..."></textarea>
+                <div id="messageError" class="error-msg">Message block cannot be left blank.</div>
+            </div>
+            <button type="submit">Submit Details</button>
+        </form>
+    </main>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            
+            // Clear prior states
+            const errors = document.querySelectorAll('.error-msg');
+            errors.forEach(err => err.style.display = 'none');
+            document.getElementById('successBanner').style.display = 'none';
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            let isValid = true;
+
+            // 1. Emptiness Validations
+            if (name === '') { document.getElementById('nameError').style.display = 'block'; isValid = false; }
+            if (message === '') { document.getElementById('messageError').style.display = 'block'; isValid = false; }
+
+            // 2. Email Formatting Validation (Regex Check)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '' || !emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+
+            // 3. Phone Digit Isolation Validation (Regex checking if string contains only digits)
+            const phoneRegex = /^\d+$/;
+            if (phone === '' || !phoneRegex.test(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                document.getElementById('successBanner').style.display = 'block';
+                document.getElementById('contactForm').reset();
+            }
+
+            return isValid;
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2026 MIVA Open University. All Rights Reserved | Balafama Jamabo Profile Submission</p>
+    </footer>
+
+</body>
+</html>
